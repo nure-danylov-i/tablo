@@ -1,23 +1,21 @@
 # label interval command
 
-#"" 1 date '+%Y-%m-%d %H:%M:%S'
 "" 1 %time
-#"" 1 sensors | awk '/^CPUTIN:/ { print $2 }'
-
-#"MEM: " 6 free -h | awk '/^Mem/ { print $3"/"$2 }' | sed s/i//g
+#"" 1 date '+%Y-%m-%d %H:%M:%S'
 "CPU:  " 1 %cpu_cores
 "MEM:  " 1 %mem
+"BTC:  " 3 curl -s https://rate.sx/1BTC | xargs printf '%.0f$'
+
 #"DISK: " 10 %disk
-"TEMP: " 5 sensors | awk '/^CPUTIN:/ { print $2 }'
+#"TEMP: " 5 sensors | awk '/^CPUTIN:/ { print $2 }'
 #"VOL: " 10 pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | cut -d '/' -f 2| sed 's/ //g'
-#"BTC:  " 3 curl -s https://rate.sx/1BTC | xargs printf '%.0f$'
+#"MEM: " 6 free -h | awk '/^Mem/ { print $3"/"$2 }' | sed s/i//g
 
-#change-volume -10%
+notify-send "Button 1"
+notify-send "Button 2"
+notify-send "Button 3"
+notify-send "Button 4"
+
 #firefox youtube.com
-#change-volume +10%
-
-notify-send 1
-notify-send 2
-notify-send 3
-notify-send 4
+#pcmanfm
 
